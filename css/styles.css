@@ -1,0 +1,25 @@
+
+#container {
+    display: flex;
+    gap: 10px;
+}
+
+#container > div {
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    font-size: 100px;
+    border: 10px solid black ;
+}
+
+#rock {
+    background-color: aquamarine;
+}
+
+#paper {
+    background-color: bisque;
+}
+
+#scissors {
+    background-color: cadetblue;
+}
