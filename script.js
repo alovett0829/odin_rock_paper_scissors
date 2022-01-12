@@ -1,28 +1,76 @@
+    const playerChoice = document.querySelectorAll('button');
 
-    const playerChoice = document.querySelectorAll('.weapon');
-    const score = document.querySelector("#score");
+    const totalScore = document.querySelector('#total-score'); //displays each player's score//
+    const weaponChoice = document.querySelector('#weapon-choice'); //display weapons choice//
+    const winner = document.querySelector('#winner'); //display winner each round//
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    const player = document.createElement('h1'); //to diplay each Score
+    const computer = document.createElement('h1')
+    totalScore.appendChild(player);
+    totalScore.appendChild(computer);
+
+    const displayPlayerWeapon = document.createElement('h3'); // shows what each person chose;
+    const displayComputerWeapon = document.createElement('h3');
+    weaponChoice.appendChild(displayPlayerWeapon);
+    weaponChoice.appendChild(displayComputerWeapon);  
     
-    const playerScore = 0;
-    const computerScore = 0;    
-    
-    let computerSelection = " ";
+
+    const roundWinner = document.createElement('h6'); //create winner each round
 
     playerChoice.forEach((choice) => {
-
-        choice.addEventListener('click', () => {
-            console.log(choice.id);
-
-            computerSelection = computerPlay();
-            console.log(computerSelection);
-
-            const tally = document.createElement('p');
-            tally.textContent = `This is the computer\'s choice ${computerSelection}`;
-            score.appendChild(tally);
-
-
+        choice.addEventListener('click', function () {
+            const computerSelection = computerPlay ();
+            playRound(choice.id, computerSelection);
         });
     });
 
+    function playRound (choice, computerSelection) {
+        player.textContent = `Player Score is ${playerScore}`;
+        computer.textContent = `Computer Score is: ${computerScore}`;
+        
+        displayPlayerWeapon.textContent = `Player chose ${choice}`;
+        displayComputerWeapon.textContent = `Computer chose ${computerSelection}`;
+
+        if (choice == computerSelection) {
+            roundWinner.textContent = "It's a tie!"
+            winner.appendChild(roundWinner);
+            return;
+
+        }   else if (choice == "rock" && computerSelection == "scissors") {
+            playerScore++;
+            roundWinner.textContent = "Player Wins";
+            winner.appendChild(roundWinner);
+            player.textContent = `Player Score is ${playerScore}`;   
+            return;
+
+        }   else if (choice == "paper" && computerSelection == "rock") {
+            playerScore++;
+            roundWinner.textContent = "Player Wins";
+            winner.appendChild(roundWinner);
+            player.textContent = `Player Score is ${playerScore}`;   
+            return;
+
+        }   else if (choice == "scissors" && computerSelection == "paper") {
+            playerScore++;
+            roundWinner.textContent = "Player Wins";
+            winner.appendChild(roundWinner); 
+            player.textContent = `Player Score is ${playerScore}`;   
+            return;
+        
+        }   else {
+            computerScore++;
+            roundWinner.textContent = "Computer Wins";
+            winner.appendChild(roundWinner);
+            computer.textContent = `Computer Score is: ${computerScore}`;
+            return;
+        }
+        
+        
+
+    };
 
     function computerPlay () {
         let computerNumber = Math.floor(Math.random()*3);    
@@ -33,61 +81,73 @@
             } else {
                 return "scissors";
             }
-        }
+        }  
 
     
+    
+    
+    // {  
         
         
-        
-        
-        
+
+    //     player.textContent = 
+    //     weaponChoice.appendChild(player);
+
+    //     computer.textContent = ;
+    //     weaponChoice.appendChild(computer);
+
+    //     if (choice == computerSelection) {
+            
+
+    //     }  
+    //         roundWinner.textContent = "Player Wins";
+    //         winner.appendChild(roundWinner);
+
+    //         displayPlayerWeapon.textContent = `Player Score is ${playerScore}`;
+    //         return;
+
+    //     } else if  {
+    //         playerScore++;
+    //         roundWinner.textContent = "Player Wins";
+    //         winner.appendChild(roundWinner);
+
+            
+
+    //     } else if {
+    //         playerScore++;
+    //         roundWinner.textContent = "Player Wins";
+    //         winner.appendChild(roundWinner);
+
+    //         displayPlayerWeapon.textContent = `Player Score is ${playerScore}`;
+    //         return;
+
+    //     } else {
+    //         computerScore++;
+    //         roundWinner.textContent = "Computer Wins";
+    //         winner.appendChild(roundWinner);
+
+    //         displayComputerWeapon.textContent = ;           
+    //         return
+    //     }
+
+    //     if (playerScore == 5 || computerScore == 5) {
+    //         endgame();
+    //     } 
 
 
+    // }      
 
+    
 
+    // // function endgame () {
+    // //     totalScore.removeChild();
+    // // }    
+   
 
-    //     
-
-    //     function game() {    
-
-    //       function playRound (playerSelection, computerSelection) {
-    //             let playerCard = playerSelection.toLowerCase();
-
-    //             if (playerCard == computerSelection) {
-    //                 return "Tie";
-    //             } else if (playerCard == "rock" && computerSelection == "scissors") {
-    //                 playerScore++; 
-    //                 return "Player Wins";
-    //             } else if (playerCard == "paper" && computerSelection == "rock") {
-    //                 playerScore++;
-    //                 return "Player Wins";
-    //             } else if (playerCard == "scissors" && computerSelection == "paper") {
-    //                 playerScore++;
-    //                 return "Player Wins";
-    //             } else {
-    //                 computerScore++;
-    //                 return "Computer Wins";
-    //             }            
-    //         }
-
-    //         const playerSelection = prompt("Choose your weapon");
-    //         const computerSelection = computerPlay();
-  
-    //     console.log(playRound(playerSelection, computerSelection));
-    //     console.log("Player Selection: " + playerSelection);
-    //     console.log("Computer Selection:" + computerSelection);
-    //     console.log(playerScore);
-    //     console.log(computerScore);
-    // }
-
-    // // for (let i = 0; i < 5; i++) {
-    // //     game();
-    // // }
-
-    // if (playerScore > computerScore) {
-    //     console.log("You won! Congratulations!");
-    // } else if (computerScore > playerScore) {
-    //     console.log("Haha you lose!");
-    // } else {
-    //     console.log("It's a tie");
-    // }
+    // //     if (playerScore > computerScore) {
+    // //             console.log("You won! Congratulations!");
+    // //         } else if (computerScore > playerScore) {
+    // //             console.log("Haha you lose!");
+    // //         } else {
+    // //             console.log("It's a tie");
+    // //         }     
