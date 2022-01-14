@@ -4,7 +4,7 @@
     gap: 10px;
 }
 
-button {
+#container > button {
     width: 400px;
     height: 400px;
     text-align: center;

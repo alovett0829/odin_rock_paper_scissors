@@ -1,8 +1,9 @@
-    const playerChoice = document.querySelectorAll('button');
+    const playerChoice = document.querySelectorAll('.choice');
 
     const totalScore = document.querySelector('#total-score'); //displays each player's score//
     const weaponChoice = document.querySelector('#weapon-choice'); //display weapons choice//
     const winner = document.querySelector('#winner'); //display winner each round//
+    const resetButton = document.querySelector('#reset');
 
     let playerScore = 0;
     let computerScore = 0;
@@ -24,13 +25,17 @@
             const computerSelection = computerPlay ();
             playRound(choice.id, computerSelection);
 
-            if (playerScore == 5 || computerScore == 5) {
+            if (playerScore == 2 || computerScore == 2) {
                 endgame();
             }
         });
     });
        
     function playRound (choice, computerSelection) {
+
+            weaponChoice.appendChild(displayPlayerWeapon);
+            weaponChoice.appendChild(displayComputerWeapon); 
+
             player.textContent = `Player Score is ${playerScore}`;
             computer.textContent = `Computer Score is: ${computerScore}`;
         
@@ -91,16 +96,34 @@
         document.getElementById('paper').setAttribute("disabled", "");
         document.getElementById('scissors').setAttribute("disabled", "");
 
+        resetButton.removeAttribute("hidden");
+
         weaponChoice.removeChild(displayPlayerWeapon);
         weaponChoice.removeChild(displayComputerWeapon); 
      
-        if (playerScore == 5) {
+        if (playerScore == 2) {
             roundWinner.textContent = "Congratulations!!!! You won!";
         } else {
-            roundWinner.textContent = "BooHoo! The Computer beat yo ass";
-        }
-
-        
+            roundWinner.textContent = "HAHA! The Computer beat yo ass";
+        }        
     }   
+
+    function resetGame () {
+        resetButton.setAttribute("hidden", " ");
+
+        playerScore = 0;
+        computerScore = 0;
+
+        computer.textContent = `Computer Score is: ${computerScore}`;
+        player.textContent = `Player Score is: ${playerScore}`;
+
+        winner.removeChild(roundWinner);
+        document.getElementById('rock').removeAttribute("disabled");
+        document.getElementById('paper').removeAttribute("disabled");
+        document.getElementById('scissors').removeAttribute("disabled");
+
+    }
+
+    resetButton.addEventListener('click', resetGame);
 
 
