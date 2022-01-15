@@ -8,13 +8,13 @@
     let playerScore = 0;
     let computerScore = 0;
 
-    const player = document.createElement('h1'); //to diplay each Score//
-    const computer = document.createElement('h1')
+    const player = document.createElement('h2'); //to diplay each Score//
+    const computer = document.createElement('h2')
     totalScore.appendChild(player);
     totalScore.appendChild(computer);
 
-    const displayPlayerWeapon = document.createElement('h2'); // shows what each person chose//
-    const displayComputerWeapon = document.createElement('h2');
+    const displayPlayerWeapon = document.createElement('h3'); // shows what each person chose//
+    const displayComputerWeapon = document.createElement('h3');
     weaponChoice.appendChild(displayPlayerWeapon);
     weaponChoice.appendChild(displayComputerWeapon);  
     
@@ -25,7 +25,7 @@
             const computerSelection = computerPlay ();
             playRound(choice.id, computerSelection);
 
-            if (playerScore == 2 || computerScore == 2) {
+            if (playerScore == 5 || computerScore == 5) {
                 endgame();
             }
         });
@@ -36,7 +36,7 @@
             weaponChoice.appendChild(displayPlayerWeapon);
             weaponChoice.appendChild(displayComputerWeapon); 
 
-            player.textContent = `Player Score is ${playerScore}`;
+            player.textContent = `Player Score is: ${playerScore}`;
             computer.textContent = `Computer Score is: ${computerScore}`;
         
             displayPlayerWeapon.textContent = `Player chose ${choice}`;
@@ -101,7 +101,7 @@
         weaponChoice.removeChild(displayPlayerWeapon);
         weaponChoice.removeChild(displayComputerWeapon); 
      
-        if (playerScore == 2) {
+        if (playerScore == 5) {
             roundWinner.textContent = "Congratulations!!!! You won!";
         } else {
             roundWinner.textContent = "HAHA! The Computer beat yo ass";
