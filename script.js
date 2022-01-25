@@ -42,36 +42,34 @@
             displayPlayerWeapon.textContent = `Player chose ${choice}`;
             displayComputerWeapon.textContent = `Computer chose ${computerSelection}`;    
 
+            winner.appendChild(roundWinner);
+
             if (choice == computerSelection) {
                 roundWinner.textContent = "It's a tie!"
-                winner.appendChild(roundWinner);
                 return;
 
             }   else if (choice == "rock" && computerSelection == "scissors") {
                 playerScore++;
                 roundWinner.textContent = "Player Wins";
-                winner.appendChild(roundWinner);
-                player.textContent = `Player Score is ${playerScore}`;   
+                player.textContent = `Player Score is: ${playerScore}`;   
                 return;
 
             }   else if (choice == "paper" && computerSelection == "rock") {
                 playerScore++;
                 roundWinner.textContent = "Player Wins";
-                winner.appendChild(roundWinner);
-                player.textContent = `Player Score is ${playerScore}`;   
+                player.textContent = `Player Score is: ${playerScore}`;   
                 return;
 
             }   else if (choice == "scissors" && computerSelection == "paper") {
                 playerScore++;
                 roundWinner.textContent = "Player Wins";
-                winner.appendChild(roundWinner); 
-                player.textContent = `Player Score is ${playerScore}`;   
+
+                player.textContent = `Player Score is: ${playerScore}`;   
                 return;
         
             }   else {
                 computerScore++;
                 roundWinner.textContent = "Computer Wins";
-                winner.appendChild(roundWinner);
                 computer.textContent = `Computer Score is: ${computerScore}`;
                 return;
             };
